@@ -1,7 +1,13 @@
 module.exports = {
-  content: [],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      flexGrow: {
+        '2': 2
+      }
+    },
   },
   plugins: [],
 }
