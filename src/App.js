@@ -1,3 +1,4 @@
+import React from 'react';
 import Sidebar from './components/Sidebar';
 import Panel from './components/Panel';
 import Header from './components/Header';

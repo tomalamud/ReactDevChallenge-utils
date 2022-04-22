@@ -6,8 +6,12 @@ function Panel() {
   return (
     <>
       <div className='bg-gray-200 w-full h-screen'>
-        <PanelHeader className="shadow"/>
-        <div className='h-20 w-full flex justify-between bg-slate-100 px-10 items-center'>Detalle <div className='bg-slate-300'>Date-Filter Component</div></div>
+        <PanelHeader/>
+        <div className='h-20 w-full flex justify-between bg-white px-4 items-center'>Detalle 
+          <div className='bg-gray-100'>
+            {/* Date-Filter Component */}
+          </div>
+        </div>
         <ColumnGroupingTable/>
       </div>
     </>

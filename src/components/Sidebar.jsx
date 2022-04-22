@@ -4,7 +4,7 @@ import SelectedListItem from './SelectedList'
 function Sidebar() {
   return (
     <>
-      <div className='bg-gray-700 w-60 h-screen'>
+      <div className='bg-gray-200 w-60 h-screen'>
         <SelectedListItem/>
       </div>
     </>
