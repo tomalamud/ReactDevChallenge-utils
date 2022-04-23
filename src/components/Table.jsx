@@ -55,20 +55,16 @@ export default function ColumnGroupingTable({ data }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(20);
 
-  const rows = data.results.map((result) => createData(result.last_updated, result.id, result.phone, result.extra_metadata.dni, result.extra_metadata.grupo, result.extra_metadata.orden, result.case_duration, result.case_result.name));
-  
-  if (!data) {
-    rows = [];
-  } 
+  let rows = data.results.map((result) => createData(result.last_updated, result.id, result.phone, result.extra_metadata.dni, result.extra_metadata.grupo, result.extra_metadata.orden, result.case_duration, result.case_result.name));
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+  // const handleChangePage = (event, newPage) => {
+  //   setPage(newPage);
+  // };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+  // const handleChangeRowsPerPage = (event) => {
+  //   setRowsPerPage(+event.target.value);
+  //   setPage(0);
+  // };
 
   return (
     <Paper sx={{ width: '100%' }}>
