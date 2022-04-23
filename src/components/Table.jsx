@@ -5,7 +5,6 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
 const columns = [
@@ -56,7 +55,7 @@ export default function ColumnGroupingTable({ data }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(20);
 
-  let rows = data.results.map((result) => createData(result.last_updated, result.id, result.phone, result.extra_metadata.dni, result.extra_metadata.grupo, result.extra_metadata.orden, result.case_duration, result.case_result.name));
+  const rows = data.results.map((result) => createData(result.last_updated, result.id, result.phone, result.extra_metadata.dni, result.extra_metadata.grupo, result.extra_metadata.orden, result.case_duration, result.case_result.name));
   
   if (!data) {
     rows = [];
@@ -110,15 +109,6 @@ export default function ColumnGroupingTable({ data }) {
           </TableBody>
         </Table>
       </TableContainer>
-      {/* <TablePagination
-        rowsPerPageOptions={[20]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      /> */}
     </Paper>
   );
 }
