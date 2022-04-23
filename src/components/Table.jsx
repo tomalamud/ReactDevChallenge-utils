@@ -56,11 +56,11 @@ export default function ColumnGroupingTable({ data }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(20);
 
-  console.log(data)
-
-  const rows = data.results.map((result) => createData(result.last_updated, result.id, result.phone, result.extra_metadata.dni, result.extra_metadata.grupo, result.extra_metadata.orden, result.case_duration, result.case_result.name))
-  // createData('sfds', 'IN', 1324171354, 3287263),
-
+  let rows = data.results.map((result) => createData(result.last_updated, result.id, result.phone, result.extra_metadata.dni, result.extra_metadata.grupo, result.extra_metadata.orden, result.case_duration, result.case_result.name));
+  
+  if (!data) {
+    rows = [];
+  } 
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -73,7 +73,7 @@ export default function ColumnGroupingTable({ data }) {
 
   return (
     <Paper sx={{ width: '100%' }}>
-      <TableContainer sx={{ maxHeight: 564 }}>
+      <TableContainer sx={{ maxHeight: 560 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -110,7 +110,7 @@ export default function ColumnGroupingTable({ data }) {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
+      {/* <TablePagination
         rowsPerPageOptions={[20]}
         component="div"
         count={rows.length}
@@ -118,7 +118,7 @@ export default function ColumnGroupingTable({ data }) {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+      /> */}
     </Paper>
   );
 }

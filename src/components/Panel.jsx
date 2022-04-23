@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react'
+import PaginationButtons from './paginationButtons';
 import PanelHeader from './PanelHeader'
 import ColumnGroupingTable from './Table';
 
 function Panel() {
   const [data, setData] = useState({});
+  const [page, setPage] = useState(0);
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('https://admindev.inceptia.ai/api/v1/inbound-case/?client=28&local_updated_date_gte=2021-03-01&local_updated_date_lte=2022-03-25', {
-        headers: {
-          'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MSwidXNlcm5hbWUiOiJyZWFjdGRldkBpbmljZXB0aWEuYWkiLCJleHAiOjE2NTA3NDU0MjAsImVtYWlsIjoicmVhY3RkZXZAaW5pY2VwdGlhLmFpIiwib3JpZ19pYXQiOjE2NTA2NTkwMjB9.8ZDhXYi7NMiMDR-nr_k9NynGdiuozp5_85ig_-0jFIo'
-        }
-      })
-      const newData = await response.json();
-      setData(newData);
+    if (page == 0) {
+      const fetchData = async () => {
+        const response = await fetch('https://admindev.inceptia.ai/api/v1/inbound-case/?client=28&local_updated_date_gte=2021-03-01&local_updated_date_lte=2022-03-25', {
+          headers: {
+            'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MSwidXNlcm5hbWUiOiJyZWFjdGRldkBpbmljZXB0aWEuYWkiLCJleHAiOjE2NTA3NDU0MjAsImVtYWlsIjoicmVhY3RkZXZAaW5pY2VwdGlhLmFpIiwib3JpZ19pYXQiOjE2NTA2NTkwMjB9.8ZDhXYi7NMiMDR-nr_k9NynGdiuozp5_85ig_-0jFIo'
+          }
+        })
+        const newData = await response.json();
+        setData(newData);
+      }
+      fetchData();
     }
-
-    fetchData();
   },[])
 
   console.log(data)
@@ -30,6 +33,9 @@ function Panel() {
           </div>
         </div>
         <ColumnGroupingTable data={data}/>
+        <div className='w-full h-10 bg-white flex justify-end items-center px-6'>
+          <PaginationButtons/>
+        </div>
       </div>
     </>
   )
