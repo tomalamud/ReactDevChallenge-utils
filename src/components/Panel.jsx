@@ -28,7 +28,7 @@ function Panel() {
       to: toRef.current.value
     })
   }
-  console.log(data)
+  console.log(date)
 
 
   return (
